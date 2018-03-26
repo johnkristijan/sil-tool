@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/johnkristijan/sil-tool#readme",
   "dependencies": {
-    "bootstrap": "^4.0.0"
+    "bootstrap": "^4.0.0",
+    "highcharts": "^6.0.7"
   }
 }
