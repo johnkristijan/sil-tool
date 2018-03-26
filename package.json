@@ -1,0 +1,22 @@
+{
+  "name": "sil-tool",
+  "version": "1.0.0",
+  "description": "sil sif tool",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/johnkristijan/sil-tool.git"
+  },
+  "author": "Ninja Consulting",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/johnkristijan/sil-tool/issues"
+  },
+  "homepage": "https://github.com/johnkristijan/sil-tool#readme",
+  "dependencies": {
+    "bootstrap": "^4.0.0"
+  }
+}
