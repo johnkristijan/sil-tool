@@ -7,84 +7,181 @@
 
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
-<link rel="stylesheet" href="style.css">
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="node_modules/highcharts/highcharts.js"></script>
+<script src="node_modules/highcharts/highcharts-more.js"></script>
+<script src="node_modules/highcharts/modules/exporting.js"></script>
+
 <title>SIL TOOL</title>
 </head>
 <body>
 
 <!-- MENU -->
-<!-- Just an image -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">
-            <img src="/img/logo.png" height="35" alt="SIL TOOL" style="border:1px solid #cccccc;">
+<a class="navbar-brand" href="#">
+    <img src="/img/logo.png" height="35" alt="SIL TOOL" style="border:1px solid #cccccc;">
+</a>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+    <li class="nav-item active">
+        <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">Asset</a>
+    </li>
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Decks
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Asset</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Decks
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Cellar Deck</a>
-                <a class="dropdown-item" href="#">Main Deck</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">3D view</a>
-              </div>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" href="#">Admin</a>
-            </li>
-          </ul>
-          <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          </form>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href="#">Cellar Deck</a>
+        <a class="dropdown-item" href="#">Main Deck</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#">3D view</a>
         </div>
-      </nav>
-
-
-
+    </li>
+    <li class="nav-item">
+        <a class="nav-link disabled" href="#">Admin</a>
+    </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+</div>
+</nav>
 
 <!-- Breadcumb -->
-    <nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="#">Home</a></li>
-        <li class="breadcrumb-item"><a href="#">Asset</a></li>
-        <li class="breadcrumb-item"><a href="#">Cellar Deck</a></li>
-        <li class="breadcrumb-item active" aria-current="page">SIF 4.28.1</li>
-    </ol>
-    </nav>
+<nav aria-label="breadcrumb">
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+    <li class="breadcrumb-item"><a href="#">Asset</a></li>
+    <li class="breadcrumb-item"><a href="#">Cellar Deck</a></li>
+    <li class="breadcrumb-item active" aria-current="page">SIF 4.28.1</li>
+</ol>
+</nav>
+
+<!-- Gauge -->
+<div id="container" style="min-width: 310px; max-width: 400px; height: 300px; margin: 0 auto"></div>
 
 
+<script>
+Highcharts.chart('container', {
+chart: {
+    type: 'gauge',
+    plotBackgroundColor: null,
+    plotBackgroundImage: null,
+    plotBorderWidth: 0,
+    plotShadow: false
+},
 
-<!-- Cards -->
-<div class="container float-left">
+title: {
+    text: 'Speedometer'
+},
 
-</div>
+pane: {
+    startAngle: -150,
+    endAngle: 150,
+    background: [{
+        backgroundColor: {
+            linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 },
+            stops: [
+                [0, '#FFF'],
+                [1, '#333']
+            ]
+        },
+        borderWidth: 0,
+        outerRadius: '109%'
+    }, {
+        backgroundColor: {
+            linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1 },
+            stops: [
+                [0, '#333'],
+                [1, '#FFF']
+            ]
+        },
+        borderWidth: 1,
+        outerRadius: '107%'
+    }, {
+        // default background
+    }, {
+        backgroundColor: '#DDD',
+        borderWidth: 0,
+        outerRadius: '105%',
+        innerRadius: '103%'
+    }]
+},
 
+// the value axis
+yAxis: {
+    min: 0,
+    max: 200,
 
+    minorTickInterval: 'auto',
+    minorTickWidth: 1,
+    minorTickLength: 10,
+    minorTickPosition: 'inside',
+    minorTickColor: '#666',
 
-<!-- error messages and status messages container -->
-<!--<div class="container-fluid" style="position:absolute;bottom:0px;right:0px;">
-    <div class="alert alert-success" role="alert">
-        <b>Status: </b>Status: SIF added successfully!
-    </div>
-</div>-->
+    tickPixelInterval: 30,
+    tickWidth: 2,
+    tickPosition: 'inside',
+    tickLength: 10,
+    tickColor: '#666',
+    labels: {
+        step: 2,
+        rotation: 'auto'
+    },
+    title: {
+        text: 'km/h'
+    },
+    plotBands: [{
+        from: 0,
+        to: 120,
+        color: '#55BF3B' // green
+    }, {
+        from: 120,
+        to: 160,
+        color: '#DDDF0D' // yellow
+    }, {
+        from: 160,
+        to: 200,
+        color: '#DF5353' // red
+    }]
+},
 
+series: [{
+    name: 'Speed',
+    data: [80],
+    tooltip: {
+        valueSuffix: ' km/h'
+    }
+}]
 
+},
+// Add some life
+function (chart) {
+if (!chart.renderer.forExport) {
+    setInterval(function () {
+        var point = chart.series[0].points[0],
+            newVal,
+            inc = Math.round((Math.random() - 0.5) * 20);
 
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        newVal = point.y + inc;
+        if (newVal < 0 || newVal > 200) {
+            newVal = point.y - inc;
+        }
+
+        point.update(newVal);
+
+    }, 3000);
+}
+});
+</script>
 </body>
 </html>
