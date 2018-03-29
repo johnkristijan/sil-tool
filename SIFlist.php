@@ -16,7 +16,7 @@
 <!-- Just an image -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">
-            <img src="/img/logo.png" height="35" alt="SIL TOOL" style="border:1px solid #cccccc;">
+            <img src="img/logo.png" height="35" alt="SIL TOOL" style="border:1px solid #cccccc;">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -80,33 +80,35 @@
                 <thead class="thead-light">
                   <tr>
                     <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
+                    <th scope="col">SIF ID</th>
+                    <th scope="col">SIF NAME</th>
+                    <th scope="col">SIF Function</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
+				<?php
+				include 'connect.php';
+				$sql = "SELECT *  FROM SIF";
+				$result = $conn->query($sql);
+				if ($result->num_rows > 0) {
+					while($row = $result->fetch_assoc()) {
+						echo "<tr>
+									<th scope='row'>" . $row['id'] . "</th>
+									<td>" . $row['sifid'] . "</td>
+									<td>" . $row['sifdescription'] . "</td>
+									<td>" . $row['deck'] . "</td>
+								</tr>";
+					}
+				}
+				include 'disconnect.php';
+				?>
                 </tbody>
               </table>
 </div>
+
+
+
+
 
 <!-- error messages and status messages container -->
 <div class="container-fluid" style="position:absolute;bottom:0px;right:0px;">
