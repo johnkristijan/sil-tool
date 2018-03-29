@@ -28,7 +28,7 @@
               <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="SIFlist.html">SIF list</a>
+                <a class="nav-link" href="SIFlist.php">SIF list</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Asset</a>
